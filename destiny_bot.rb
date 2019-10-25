@@ -15,7 +15,7 @@ bot = Discordrb::Bot.new token: ENV['TOKEN'], client_id: ENV['CLIENT_ID']
 bot.message(contains: /\[\[([^:]+)\]\]/) do |event|
   event.message.content =~ /\[\[([^:]+)\]\]/
   q = $1
-  next if q.length < 3
+  next if q.length < 2
   
   filtered = data.select{|x| x["name"] =~ /#{q}/i}.sort_by{|x| [-x["tierType"], -x["index"]]}
 
